@@ -1,0 +1,58 @@
+<%- include('../customer/shared/head', { pageTitle: 'Manage Booking'}) %>
+     <link rel="stylesheet" href="/styles/auth.css" />
+     <link rel="stylesheet" href="/styles/manage-bookings.css" />
+</head>
+<body>
+    <%- include('../customer/shared/header') %>
+    <main>
+      <div class="auth-main">
+        <section class="login-form">
+          <form action="/manage-bookings" method="POST">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+            <h2 class="login-label">Pending Booking</h2><ul>
+              <section class="manage-bookings">
+              <li>Customer Name 
+                <ul>
+                  <li>Fred</li>
+                  <li>Gyan</li>
+                </ul>
+              </li>
+              <li>Date
+                <ul>
+                  <li>12/12/2222</li>
+                  <li>12/22/2122</li>
+                </ul>
+              </li>
+              <li>Time
+                <ul>
+                  <li>12:21</li>
+                  <li>23:32</li>
+                </ul>
+              </li>
+              <li>Service
+                <ul>
+                  <li>Photography</li>
+                  <li>Videography</li>
+                </ul>
+              </li>
+              <li>Status
+                <ul>
+                  <select name="service-type" id="service-type">
+                    <option value="" disabled selected>pending</option>
+                    <option value="photography">Approved</option>
+                    <option value="videography">Cancel</option>
+                  </select>
+                  <select name="service-type" id="service-type">
+                    <option value="" disabled selected>pending</option>
+                    <option value="photography">Approved</option>
+                    <option value="videography">Cancel</option>
+                  </select>
+                </ul>
+              </li>
+            </section>
+            </ul>
+          </form>
+        </section>
+      </div>
+    </main>
+    <%- include('../customer/shared/footer') %>

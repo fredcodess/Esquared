@@ -1,0 +1,37 @@
+.logo {
+  align-items: center;
+}
+
+.logo a {
+  font-size: 4rem;
+  font-family: "Romanesco", "sans-serif";
+  font: bold;
+}
+
+.logo img {
+  height: 4rem;
+  width: 5rem;
+}
+
+header {
+  display: flex;
+  gap: var(--space-8);
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-medium);
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-4);
+}
+
+nav li:hover {
+  text-decoration: underline;
+}
+
+.nav-aside ul {
+  display: flex;
+  gap: var(--space-4);
+}

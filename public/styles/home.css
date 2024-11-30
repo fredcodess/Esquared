@@ -1,0 +1,66 @@
+main {
+  width: 90%;
+  max-width: 90rem;
+  margin: 10px auto;
+}
+
+main h3 {
+  font-size: xxx-large;
+  font: bold;
+}
+
+.main-section h3 {
+  margin: 0;
+}
+
+.main-section {
+  font-size: xxxx-large;
+  background-image: url(/emmzo.jpg);
+  height: 100vh;
+  color: var(--color-white-700);
+  text-transform: uppercase;
+}
+
+.main-section,
+main h3,
+.services-breakdown div,
+.services-breakdown div p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.main-section-buttons ul {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.services-breakdown {
+  padding: var(--space-8);
+  background-color: var(--color-gray-100);
+  display: flex;
+  gap: var(--space-8);
+}
+
+i {
+  font-size: xx-large;
+}
+
+ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px 0px;
+}
+
+li:nth-of-type(4),
+li:nth-of-type(6) {
+  grid-column: 1 / span 2;
+}
+
+li img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}

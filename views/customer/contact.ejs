@@ -1,0 +1,46 @@
+<%- include('./shared/head', { pageTitle: 'CONTACT'}) %>
+<link rel="stylesheet" href="/styles/auth.css" />
+  </head>
+  <body>
+    <%- include('./shared/header') %>
+    <main>
+        <div class="auth-main">
+          <section class="login-form">
+            <form action="/contact" method="POST">
+              <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+              <h2 class="login-label">Contact</h2>
+              <label for="name">Full Name</label>
+                <input
+                  type="text"
+                  name="fullname"
+                  required
+                />
+              <label for="email">Email</label>
+              <input
+                type="email"
+                name="email"
+                required
+              />
+              <label for="subject">Subject</label>
+              <input
+                type="subject"
+                name="subject"
+                required
+              />
+              <label for="message">Message</label>
+              <textarea
+                name="message"
+                id="message"
+                required
+              ></textarea>
+              <input type="hidden" name="response">
+              <button>Submit</button>
+            </form>
+          </section>
+          <section class="login-img">
+            <video src="/contact-video.mp4" autoplay muted loop></video>
+          </section>
+        </div>
+        <%- include('./shared/bookings') %>
+      </main>
+    <%- include('./shared/footer') %>

@@ -1,0 +1,83 @@
+<%- include('../shared/head', { pageTitle: 'SIGNUP'}) %>
+<link rel="stylesheet" href="/styles/auth.css" />
+  </head>
+  <body>
+    <%- include('../shared/header') %>
+    <main>
+        <div class="auth-main">
+          <section class="login-form">
+            <% if (inputData.errorMessage) { %>
+              <section class="alert">
+                  <h2>Invalid Input</h2>
+                  <p><%= inputData.errorMessage %></p>
+              </section>
+          <% } %> 
+            <form action="/signup" method="post">
+              <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+              <h2>Register</h2>
+              <label for="email">Email</label>
+              <input type="email" name="email" value="<%= inputData.email %>" required />
+              <label for="password">Password</label>
+              <div class="passwords">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  minlength="8"
+                  value="<%= inputData.password %>"
+                  required
+                />
+                <input
+                  type="password"
+                  name="confirm_password"
+                  placeholder="confirm_password"
+                  minlength="6"
+                  value="<%= inputData.confirm_password %>"
+                  required
+                />
+              </div>
+              <label for="fullname">Full Name</label>
+                <input
+                  type="text"
+                  name="fullname"
+                  placeholder="Full Name"
+                  value="<%= inputData.fullname %>"
+                  required
+                />
+              <label for="street">Street</label>
+              <input
+                type="street"
+                name="street"
+                placeholder="Street"
+                value="<%= inputData.street %>"
+                required
+              />
+              <div class="cityandpc">
+                <input type="city" name="city" placeholder="City" value="<%= inputData.city %>" required />
+                <input
+                  type="text"
+                  name="postalCode"
+                  id="postalCode"
+                  placeholder="Postal Code"
+                  value="<%= inputData.postalCode %>"
+                  required
+                  minlength="5"
+                  maxlength="5"
+                />
+              </div>
+              <button>Sign Up</button>
+              <p>
+                Already have an account?
+                <a href="login">
+                  <strong>Sign In</strong>
+                </a>
+              </p>
+            </form>
+          </section>
+          <section class="login-img">
+            <img src="/camera.jpg" alt="camera.jpg" />
+          </section>
+        </div>
+        <%- include('../shared/booking') %>
+      </main>
+    <%- include('../shared/footer') %>

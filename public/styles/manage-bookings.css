@@ -1,0 +1,8 @@
+.manage-bookings ul li {
+  display: flex;
+}
+
+h2 ul li ul li {
+  display: flex;
+  flex-direction: column;
+}

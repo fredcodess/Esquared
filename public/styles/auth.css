@@ -1,0 +1,105 @@
+main {
+  width: 70%;
+  max-width: 80rem;
+  margin: 10px auto;
+  padding: var(--space-4);
+}
+
+.auth-main {
+  background-color: #f7f7f7;
+  display: flex;
+  padding: var(--space-4);
+  justify-content: space-around;
+  border-radius: var(--border-radius-medium);
+}
+
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-8);
+}
+
+.login-img img {
+  width: 500px;
+  border-radius: var(--border-radius-medium);
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+form input[type="email"],
+form input[type="password"],
+form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius-medium);
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form input {
+  border-color: var(--color-black-700);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--color-black-700);
+  color: var(--color-white-700);
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form p {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+form p {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+}
+
+form p a {
+  color: var(--color-black-700);
+}
+
+form p a:hover {
+  text-decoration: underline;
+}
+
+.names,
+.passwords,
+.cityandpc {
+  display: flex;
+  gap: var(--space-4);
+}
+
+textarea {
+  height: 100px;
+  margin-bottom: var(--space-8);
+}
+
+video {
+  width: 500px;
+  height: 600px;
+  border-radius: var(--border-radius-medium);
+}

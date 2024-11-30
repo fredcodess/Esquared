@@ -1,0 +1,51 @@
+<%- include('../shared/head', { pageTitle: 'LOGIN'}) %>
+     <link rel="stylesheet" href="/styles/auth.css" />
+</head>
+<body>
+    <%- include('../shared/header') %>
+    <main>
+      <div class="auth-main">
+        <section class="login-form">
+          <% if (inputData.errorMessage) { %>
+            <section class="alert">
+                <h2>Invalid Credentials</h2>
+                <p><%= inputData.errorMessage %></p>
+            </section>
+        <% } %>
+          <form action="/login" method="POST">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+            <h2 class="login-label">Welcome Back</h2>
+            <label for="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Enter your email"
+              value="<%= inputData.email %>"
+              required
+            />
+            <label for="password">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="********"
+              value="<%= inputData.password %>"
+              required
+            />
+            <button>Sign In</button>
+            <p>
+              Don't have an account?
+              <a href="signup">
+                <strong>Sign Up</strong>
+              </a>
+            </p>
+          </form>
+        </section>
+        <section class="login-img">
+          <img src="/camera.jpg" alt="camera.jpg" />
+        </section>
+      </div>
+      <%- include('../shared/bookings') %>
+    </main>
+    <%- include('../shared/footer') %>

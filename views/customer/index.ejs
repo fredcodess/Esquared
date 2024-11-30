@@ -1,0 +1,146 @@
+<%- include('./shared/head', { pageTitle: 'E-SQUARED MEDIA'}) %>
+<link rel="stylesheet" href="/styles/home.css" />
+  </head>
+  <body>
+    <%- include('./shared/header') %>
+    <main>
+        <section class="main-section">
+          <h3>Capture Your Special Moments</h3>
+          <p>
+            Professional photography and videography for all your events. We
+            create memories that last a lifetime.
+          </p>
+          <div class="main-section-buttons">
+            <ul>
+              <a href="/views/customer/authentication/login.html"
+                ><li class="btn">Book Now</li></a
+              >
+              <a href="/views/customer/authentication/login.html"
+                ><li class="btn">Learn More</li></a
+              >
+            </ul>
+          </div>
+        </section>
+        <section class="services">
+          <h3>Our Services</h3>
+          <div class="services-breakdown">
+            <div class="photo-service">
+              <i class="fa-solid fa-camera"></i>
+              <h4>Event Photography</h4>
+              <p>
+                Capture the essence of your special day with our professional
+                photography services.
+              </p>
+            </div>
+            <div class="video-service">
+              <i class="fa-solid fa-video"></i>
+              <h4>Event Videography</h4>
+              <p>
+                Create lasting memories with our high-quality video production for
+                your events.
+              </p>
+            </div>
+            <div class="package-service">
+              <i class="fa-sharp fa-regular fa-envelope"></i>
+              <h4>Photo & Video Packages</h4>
+              <p>
+                Get the best of both worlds with our combined photo and video
+                packages.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="Portfolio">
+          <h3>Our Portfolio</h3>
+          <section class="photo-gallery">
+            <!--WE WILL LOOP THROUGH IMAGES IN THE DATABASE-->
+            <ul>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+              <li>
+                <div class="photo-item">
+                  <img src="/bride.jpg" alt="Image 1" />
+                </div>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section class="reviews">
+          <h3>Client Testimonials</h3>
+          <p>
+            "EventCapture made our wedding day unforgettable. The photos and video
+            are absolutely stunning!"
+          </p>
+          <p>- Emily R.</p>
+        </section>
+        <%- include('./shared/bookings') %> 
+      </main>
+    <%- include('./shared/footer') %>
