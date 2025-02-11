@@ -6,7 +6,8 @@ const router = express.Router();
 router.get("/contact", contactController.getContactPage);
 router.post("/contact", contactController.contact);
 router.get("/admin/enquiries", contactController.getAllEnquiries);
-router.get("/admin/enquiries/:id", contactController.getEnquiriesDetails);
-route.post("/admin/enquiries/respond", contactController.getEnquiriesResponse);
+router.get("/admin/enquiries/:id", contactController.getUpdateContact);
+router.delete("/admin/enquiries/:id", contactController.deleteContact);
+router.post("/respond/:id", contactController.sendEmailResponse);
 
 module.exports = router;

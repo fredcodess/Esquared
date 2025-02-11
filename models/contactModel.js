@@ -2,12 +2,14 @@ const mongodb = require("mongodb");
 const db = require("../data/database");
 
 class Contact {
-  constructor(contactDocument) {
-    const { fullname, email, subject, message } = contactDocument;
+  constructor(fullname, email, subject, message, id = null) {
     this.fullname = fullname;
     this.email = email;
     this.subject = subject;
     this.message = message;
+    if (id) {
+      this.id = id.toString();
+    }
   }
 
   async contact() {
@@ -21,9 +23,14 @@ class Contact {
 
   static async findAll() {
     const contacts = await db.getDb().collection("enquiries").find().toArray();
-
-    return contacts.map(function (contactDocument) {
-      return new Contact(contactDocument);
+    return contacts.map((contactDoc) => {
+      return new Contact(
+        contactDoc.fullname,
+        contactDoc.email,
+        contactDoc.subject,
+        contactDoc.message,
+        contactDoc._id
+      );
     });
   }
 
@@ -35,6 +42,7 @@ class Contact {
       error.code = 404;
       throw error;
     }
+
     const contact = await db
       .getDb()
       .collection("enquiries")
@@ -46,7 +54,13 @@ class Contact {
       throw error;
     }
 
-    return new Product(contact);
+    return new Contact(
+      contact.fullname,
+      contact.email,
+      contact.subject,
+      contact.message,
+      contact._id
+    );
   }
 
   static async saveResponse(contactId, response) {
@@ -61,6 +75,31 @@ class Contact {
         );
     } catch (error) {
       throw new Error("Failed to save response: " + error.message);
+    }
+  }
+
+  async update() {
+    if (this.id) {
+      const contactId = new mongodb.ObjectId(this.id);
+      const responded = "responded";
+      await db
+        .getDb()
+        .collection("enquiries")
+        .updateOne(
+          { _id: contactId },
+          {
+            $set: {
+              status: responded,
+            },
+          }
+        );
+    }
+  }
+
+  async remove() {
+    if (this.id) {
+      const contactId = new mongodb.ObjectId(this.id);
+      await db.getDb().collection("enquiries").deleteOne({ _id: contactId });
     }
   }
 }

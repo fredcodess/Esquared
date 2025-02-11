@@ -1,11 +1,142 @@
-<div id="backdrop"></div>
-<header>
-  <div class="logo">
-    <a href="/"><img src="/logo.png" alt="logo.png" />MEDIA</a>
+<div
+  id="backdrop"
+  class="fixed inset-0 bg-black bg-opacity-50 hidden z-10"
+></div>
+
+<!-- Header -->
+<header class="bg-brown-500">
+  <nav class="container mx-auto flex justify-between items-center py-4">
+    <!-- Logo Section -->
+    <div class="logo">
+      <a href="/" class="flex items-center text-xl font-semibold text-white">
+        <img src="/media/logo.png" alt="logo.png" class="h-12 w-12" />
+        <span class="ml-2 text-black">MEDIA</span>
+      </a>
+    </div>
+
+    <!-- Hamburger Icon -->
+    <button id="hamburger" class="text-black text-2xl md:hidden">
+      &#9776;
+    </button>
+
+    <!-- Navigation Links -->
+    <ul
+      id="nav-links"
+      class="flex space-x-6 text-sm font-medium text-black hidden md:flex"
+    >
+      <% if (!locals.isAdmin) { %>
+      <li><a href="/" class="hover:underline">Home</a></li>
+      <li><a href="/team" class="hover:underline">Team</a></li>
+      <li><a href="/price" class="hover:underline">Prices</a></li>
+      <li><a href="/rembg" class="hover:underline">Remove BG</a></li>
+      <li><a href="/contact" class="hover:underline">Contact</a></li>
+      <% } %> <% if (locals.isAuth && !locals.isAdmin) { %>
+      <li><a href="/gallery" class="hover:underline">Gallery</a></li>
+      <% } %> <% if (locals.isAdmin) { %>
+      <li>
+        <a href="/admin/manage-bookings" class="hover:underline"
+          >Manage Bookings</a
+        >
+      </li>
+      <li><a href="/admin/analytics" class="hover:underline">Analytics</a></li>
+      <li>
+        <a href="/admin/enquiries" class="hover:underline">Customer Service</a>
+      </li>
+      <% } %>
+    </ul>
+
+    <!-- Navigation Aside (Login, Logout, Book buttons) -->
+    <div class="flex items-center space-x-4 hidden md:flex">
+      <% if (locals.isAuth && !locals.isAdmin) { %>
+      <a
+        href="/book"
+        id="edit-booking"
+        class="btn bg-black text-white px-4 py-2 rounded hover:bg-gray-800"
+      >
+        Book Now
+      </a>
+      <% } %> <% if (locals.isAuth) { %>
+      <form action="/logout" method="POST" class="inline">
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>" />
+        <button
+          class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 flex items-center"
+        >
+          Logout
+        </button>
+      </form>
+      <% } else { %>
+      <a
+        href="/login"
+        class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 flex items-center"
+      >
+        Login
+      </a>
+      <% } %>
+    </div>
+  </nav>
+
+  <!-- Slide-in Navbar for Mobile -->
+  <div
+    id="mobile-navbar"
+    class="fixed top-0 left-0 h-full w-2/3 bg-black transform -translate-x-full transition-all duration-300 z-20"
+  >
+    <div class="flex justify-between p-4">
+      <span class="text-black text-xl">Menu</span>
+      <button id="close-nav" class="text-white text-2xl">X</button>
+    </div>
+    <ul class="space-y-6 px-4 text-white">
+      <% if (!locals.isAdmin) { %>
+      <li><a href="/" class="hover:underline">Home</a></li>
+      <li><a href="/team" class="hover:underline">Team</a></li>
+      <li>
+        <a href="/pdf/PRICE LIST.pdf" download class="hover:underline"
+          >Pricing</a
+        >
+      </li>
+      <li><a href="/rembg" class="hover:underline">Remove BG</a></li>
+      <li><a href="/contact" class="hover:underline">Contact</a></li>
+      <% } %> <% if (locals.isAuth && !locals.isAdmin) { %>
+      <li><a href="/gallery" class="hover:underline">Gallery</a></li>
+      <% } %> <% if (locals.isAdmin) { %>
+      <li>
+        <a href="/admin/manage-bookings" class="hover:underline"
+          >Manage Bookings</a
+        >
+      </li>
+      <li><a href="/admin/analytics" class="hover:underline">Analytics</a></li>
+      <li>
+        <a href="/admin/enquiries" class="hover:underline">Customer Service</a>
+      </li>
+      <% } %>
+    </ul>
+
+    <!-- Mobile buttons (Login, Logout, Book) -->
+    <div class="flex flex-col space-y-4 px-4 py-6">
+      <% if (locals.isAuth && !locals.isAdmin) { %>
+      <a
+        href="/book"
+        id="edit-booking"
+        class="btn bg-gray-100 text-black px-4 py-2 rounded hover:bg-gray-800 hover:text-white"
+      >
+        Book Now
+      </a>
+      <% } %> <% if (locals.isAuth) { %>
+      <form action="/logout" method="POST" class="inline">
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>" />
+        <button
+          class="bg-gray-100 text-black px-4 py-2 rounded hover:bg-gray-800 hover:text-white"
+        >
+          Logout
+        </button>
+      </form>
+      <% } else { %>
+      <a
+        href="/login"
+        class="bg-black text-white px-4 py-2 rounded hover:bg-gray-800 items-center"
+      >
+        Login
+      </a>
+      <% } %>
+    </div>
   </div>
-  <%- include('nav-elements') %>
-  <!-- <button id="mobile-menu-button">
-    <span></span><span></span><span></span>
-  </button> -->
 </header>
-<!-- <aside id="mobile-menu"><%- include('nav-elements') %></aside> -->

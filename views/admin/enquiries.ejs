@@ -1,44 +1,32 @@
 <%- include('../customer/shared/head', { pageTitle: 'Manage Booking'}) %>
-     <link rel="stylesheet" href="/styles/auth.css" />
-     <link rel="stylesheet" href="/styles/enquiries.css" />
+     <script src="/scripts/contact-management.js" defer></script>
 </head>
 <body>
     <%- include('../customer/shared/header') %>
-    <main>
-        <div class="admin-panel">
-            <h1>Admin Response Panel</h1>
-            <div class="panel-container">
-              <!-- Customer Inquiries List -->
-              <div class="inquiry-list">
-                <h2>Customer Inquiries</h2>
-                <p class="subtext">Select an inquiry to respond</p>
-                <ul>
-                <% for (const contact of contacts) { %>
-                  <li class="inquiry-item">
-                    <%- include('./shared/all-enquiries', { contact: contact}) %>
-                  </li>
-                <% } %>
-                </ul>
-              </div>
-      
-              <!-- Selected Inquiry Details -->
-              <div class="inquiry-details">
-                <h2>Selected Inquiry</h2>
-                <p class="subtext">Respond to the customer's message</p>
-                <div class="inquiry-content">
-                  <h3>Return Policy</h3>
-                  <p><strong>From:</strong> <%= contact.fullname %> (<%= contact.email %>)</p>
-                  <div class="customer-question">
-                    <%= contact.message %>
-                  </div>
-                  <form action="/respond" method="POST">
-                  <textarea name="response" placeholder="Type your response here..."></textarea>
-                  <input type="hidden" name="contactId" value="<%= contact._id %>">
-                  <button class="send-btn">Send Response</button>
-                </form>
+    <main class="container mx-auto p-6">
+      <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="card-body p-6">
+          <h1 class="card-title text-3xl font-bold mb-4">Admin Response Panel</h1>
+          <h2 class="text-2xl font-semibold mb-2">Customer Inquiries</h2>
+          <p class="subtext text-gray-600 mb-4">Select an inquiry to respond</p>
+          
+          <ul class="list-group list-group-flush space-y-4">
+            <% for (const contact of contacts) { %>
+              <li class="list-group-item bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex justify-between items-center">
+                <div>
+                  <strong class="block text-xl font-semibold"><%= contact.subject %></strong>
+                  <span class="text-sm text-gray-600"><%= contact.fullname %></span>
                 </div>
-              </div>
-            </div>
-          </div>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end space-x-3">
+                  <a class="btn btn-alt px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300" href="/admin/enquiries/<%= contact.id %>">Respond</a>
+                  <button class="btn btn-alt px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-300" data-contactid="<%= contact.id %>" data-csrf="<%= locals.csrfToken %>">Delete</button>
+                </div>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
     </main>
+    
     <%- include('../customer/shared/footer') %>

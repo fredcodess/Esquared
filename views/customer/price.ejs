@@ -1,0 +1,100 @@
+<%- include('./shared/head', { pageTitle: 'CONTACT'}) %>
+  </head>
+  <body>
+    <%- include('./shared/header') %>
+    <main class="bg-gray-50 py-10">
+        <div class="max-w-7xl  mx-auto px-4 sm:px-6 lg:px-8">
+            <header class="text-center mb-10">
+              <h1 class="text-4xl font-bold text-gray-800">Price List</h1>
+              <p class="text-gray-600 mt-2">
+                Packages for Weddings, Birthdays, Dinners, and More
+              </p>
+            </header>
+      
+            <div class="space-y-8">
+              <!-- Weddings Section -->
+              <section>
+                <h2 class="text-2xl font-semibold text-gray-700">Weddings</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                  <!-- Bronze Package -->
+                  <div class="p-6 bg-white shadow-md rounded-lg">
+                    <h3 class="text-lg font-bold text-gray-800">Bronze Package</h3>
+                    <ul class="mt-2 text-gray-600">
+                      <li>Pictures Only - £400</li>
+                      <li>Pictures & Video - £750</li>
+                      <li>20 pictures with Video</li>
+                    </ul>
+                  </div>
+                  <!-- Silver Package -->
+                  <div class="p-6 bg-white shadow-md rounded-lg">
+                    <h3 class="text-lg font-bold text-gray-800">Silver Package</h3>
+                    <ul class="mt-2 text-gray-600">
+                      <li>Pictures Only - £600</li>
+                      <li>Pictures & Video - £1,000</li>
+                      <li>35 pictures with Video</li>
+                    </ul>
+                  </div>
+                  <!-- Golden Package -->
+                  <div class="p-6 bg-white shadow-md rounded-lg">
+                    <h3 class="text-lg font-bold text-gray-800">Golden Package</h3>
+                    <ul class="mt-2 text-gray-600">
+                      <li>Pictures Only - £1,000</li>
+                      <li>Pictures & Video - £2,500</li>
+                      <li>50 pictures</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+      
+              <!-- Other Sections (e.g., Birthdays, Photoshoots) -->
+              <section>
+                <h2 class="text-2xl font-semibold text-gray-700">Photoshoots</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                  <!-- Bronze Photoshoot -->
+                  <div class="p-6 bg-white shadow-md rounded-lg">
+                    <h3 class="text-lg font-bold text-gray-800">Bronze Photoshoot</h3>
+                    <ul class="mt-2 text-gray-600">
+                      <li>Home photoshoot</li>
+                      <li>3 hours session</li>
+                      <li>10 edited pictures</li>
+                      <li>Optional outfit change (£250-300)</li>
+                    </ul>
+                  </div>
+                  <!-- Silver Photoshoot -->
+                  <div class="p-6 bg-white shadow-md rounded-lg">
+                    <h3 class="text-lg font-bold text-gray-800">Silver Photoshoot</h3>
+                    <ul class="mt-2 text-gray-600">
+                      <li>Outside/studio photoshoot</li>
+                      <li>4 hours session</li>
+                      <li>20 edited pictures</li>
+                      <li>Optional outfit change (£300-400)</li>
+                    </ul>
+                  </div>
+                  <!-- Golden Photoshoot -->
+                  <div class="p-6 bg-white shadow-md rounded-lg">
+                    <h3 class="text-lg font-bold text-gray-800">Golden Photoshoot</h3>
+                    <ul class="mt-2 text-gray-600">
+                      <li>Studio photoshoot</li>
+                      <li>5 hours session</li>
+                      <li>30 pictures</li>
+                      <li>Professional video</li>
+                      <li>Optional outfit change (£400-450)</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+      
+              <!-- Add-On Section -->
+              <section>
+                <h2 class="text-2xl font-semibold text-gray-700">Add-Ons</h2>
+                <div class="p-6 bg-white shadow-md rounded-lg mt-4">
+                  <ul class="text-gray-600">
+                    <li>Album - £100</li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+        <%- include('./shared/bookings') %>
+      </main>
+    <%- include('./shared/footer') %>

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/media/favicon.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= pageTitle %></title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,16 +24,32 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <link rel="stylesheet" href="/styles/base.css" />
-    <link rel="stylesheet" href="/styles/navigation.css" />
+    <link href="/styles/output.css" rel="stylesheet" />
     <link rel="stylesheet" href="/styles/overlay.css" />
-    <link rel="stylesheet" href="/styles/booking.css" />
     <script src="/scripts/config.js" defer></script>
+    <script src="/scripts/hamburgerIcon.management.js" defer></script>
+    <!-- <script src="https://cdn.jotfor.ms/s/umd/latest/for-embedded-agent.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        window.AgentInitializer.init({
+          rootId: "JotformAgent-01948eef20717249a544db704d395e940e2b",
+          formID: "01948eef20717249a544db704d395e940e2b",
+          queryParams: ["skipWelcome=1", "maximizable=1"],
+          domain: "https:\/\/eu.jotform.com",
+          isInitialOpen: false,
+          isDraggable: false,
+          background: "linear-gradient(180deg, #C8CEED 0%, #C8CEED 100%)",
+          buttonBackgroundColor: "#0a1551",
+          buttonIconColor: "#fff",
+          variant: false,
+          customizations: {
+            greeting: "Yes",
+            greetingMessage: "Hi! How can I assist you?",
+            pulse: "Yes",
+            position: "right",
+          },
+        });
+      });
+    </script> -->
   </head>
 </html>

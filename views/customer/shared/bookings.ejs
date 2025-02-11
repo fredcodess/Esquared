@@ -7,8 +7,16 @@
     <form action="/bookings" method="POST">
       <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>" />
       <div class="event_type">
+        <label for="event_type">Fullname</label>
+        <input type="text" name="fullname" id="fullname" required />
+      </div>
+      <div class="event_type">
+        <label for="event_type">Email</label>
+        <input type="email" name="email" id="email" required />
+      </div>
+      <div class="event_type">
         <label for="event_type">Event Type</label>
-        <select name="event_type" id="event_type">
+        <select name="event_type" id="event_type" required>
           <option value="" disabled selected>Select event type</option>
           <option value="wedding">Wedding</option>
           <option value="corporate-event">Corporate Event</option>
@@ -18,7 +26,7 @@
       </div>
       <div class="service_type">
         <label for="service_type">Service Type</label>
-        <select name="service_type" id="service_type">
+        <select name="service_type" id="service_type" required>
           <option value="" disabled selected>Select service type</option>
           <option value="photography">Photography</option>
           <option value="videography">Videography</option>
@@ -28,15 +36,25 @@
       <div class="location-date">
         <div class="event_date">
           <label for="event_date">Event Date</label>
-          <input type="date" id="event_date" name="event_date" />
+          <input type="date" id="event_date" name="event_date" required />
         </div>
         <div class="appointment_time">
           <label for="appointment_time">Event Time</label>
-          <input type="time" id="appointment_time" name="appointment_time" />
+          <input
+            type="time"
+            id="appointment_time"
+            name="appointment_time"
+            required
+          />
         </div>
         <div class="event_location">
           <label for="event_location">Event Location</label>
-          <input type="text" id="event_location" name="event_location" />
+          <input
+            type="text"
+            id="event_location"
+            name="event_location"
+            required
+          />
         </div>
       </div>
       <div class="additional_info">

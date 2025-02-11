@@ -1,83 +1,113 @@
 <%- include('../shared/head', { pageTitle: 'SIGNUP'}) %>
-<link rel="stylesheet" href="/styles/auth.css" />
   </head>
   <body>
     <%- include('../shared/header') %>
     <main>
-        <div class="auth-main">
-          <section class="login-form">
-            <% if (inputData.errorMessage) { %>
-              <section class="alert">
-                  <h2>Invalid Input</h2>
-                  <p><%= inputData.errorMessage %></p>
-              </section>
+      <div class="auth-main flex justify-around bg-gray-100 p-8 rounded-lg">
+        <!-- Registration Form Section -->
+        <section class="login-form w-full md:w-1/2 flex flex-col space-y-6 p-8">
+          <% if (inputData.errorMessage) { %>
+            <section class="alert mb-4 p-4 bg-red-100 text-red-600 rounded-lg">
+                <h2 class="font-semibold">Invalid Input</h2>
+                <p><%= inputData.errorMessage %></p>
+            </section>
           <% } %> 
-            <form action="/signup" method="post">
-              <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
-              <h2>Register</h2>
-              <label for="email">Email</label>
-              <input type="email" name="email" value="<%= inputData.email %>" required />
-              <label for="password">Password</label>
-              <div class="passwords">
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="password"
-                  minlength="8"
-                  value="<%= inputData.password %>"
-                  required
-                />
-                <input
-                  type="password"
-                  name="confirm_password"
-                  placeholder="confirm_password"
-                  minlength="6"
-                  value="<%= inputData.confirm_password %>"
-                  required
-                />
-              </div>
-              <label for="fullname">Full Name</label>
-                <input
-                  type="text"
-                  name="fullname"
-                  placeholder="Full Name"
-                  value="<%= inputData.fullname %>"
-                  required
-                />
-              <label for="street">Street</label>
+          
+          <form action="/signup" method="post" class="flex flex-col space-y-4">
+            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+            <h2 class="text-center text-2xl mb-6">Register</h2>
+            
+            <label for="email" class="text-sm">Email</label>
+            <input
+              type="email"
+              name="email"
+              value="<%= inputData.email %>"
+              required
+              class="w-full p-3 border border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+            />
+            
+            <label for="password" class="text-sm">Password</label>
+            <div class="passwords flex gap-4">
               <input
-                type="street"
-                name="street"
-                placeholder="Street"
-                value="<%= inputData.street %>"
+                type="password"
+                name="password"
+                placeholder="Password"
+                minlength="8"
+                value="<%= inputData.password %>"
                 required
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
               />
-              <div class="cityandpc">
-                <input type="city" name="city" placeholder="City" value="<%= inputData.city %>" required />
-                <input
-                  type="text"
-                  name="postalCode"
-                  id="postalCode"
-                  placeholder="Postal Code"
-                  value="<%= inputData.postalCode %>"
-                  required
-                  minlength="5"
-                  maxlength="5"
-                />
-              </div>
-              <button>Sign Up</button>
-              <p>
-                Already have an account?
-                <a href="login">
-                  <strong>Sign In</strong>
-                </a>
-              </p>
-            </form>
-          </section>
-          <section class="login-img">
-            <img src="/camera.jpg" alt="camera.jpg" />
-          </section>
-        </div>
-        <%- include('../shared/booking') %>
+              <input
+                type="password"
+                name="confirm_password"
+                placeholder="Confirm Password"
+                minlength="8"
+                value="<%= inputData.confirm_password %>"
+                required
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+              />
+            </div>
+            
+            <label for="fullname" class="text-sm">Full Name</label>
+            <input
+              type="text"
+              name="fullname"
+              placeholder="Full Name"
+              value="<%= inputData.fullname %>"
+              required
+              class="w-full p-3 border border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+            />
+            
+            <label for="street" class="text-sm">Street</label>
+            <input
+              type="text"
+              name="street"
+              placeholder="Street"
+              value="<%= inputData.street %>"
+              required
+              class="w-full p-3 border border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+            />
+            
+            <div class="cityandpc flex gap-4">
+              <input
+                type="text"
+                name="city"
+                placeholder="City"
+                value="<%= inputData.city %>"
+                required
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+              />
+              <input
+                type="text"
+                name="postalCode"
+                placeholder="Postal Code"
+                value="<%= inputData.postalCode %>"
+                required
+                minlength="5"
+                maxlength="5"
+                class="w-full p-3 border border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
+              />
+            </div>
+            
+            <button type="submit" class="w-full p-3 bg-black text-white rounded-lg text-sm hover:bg-gray-700">
+              Sign Up
+            </button>
+            
+            <p class="text-center text-sm">
+              Already have an account? 
+              <a href="login" class="text-blue-500 hover:underline">
+                <strong>Sign In</strong>
+              </a>
+            </p>
+          </form>
+        </section>
+      
+        <!-- Image Section (Hidden on Mobile) -->
+        <section class="login-img p-4 hidden md:block w-1/2 flex justify-center items-center">
+          <img src="/media/camera.jpg" alt="camera" class="rounded-lg w-[500px] h-[600px] object-cover"/>
+        </section>
+      </div>
+      
+        <%- include('../shared/bookings') %>
       </main>
     <%- include('../shared/footer') %>

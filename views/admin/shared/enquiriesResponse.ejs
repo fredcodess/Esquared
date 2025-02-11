@@ -1,0 +1,29 @@
+<%- include('../../customer/shared/head', { pageTitle: 'Respond '}) %>
+     <link rel="stylesheet" href="/styles/auth.css" />
+     <link rel="stylesheet" href="/styles/enquiries.css" />
+</head>
+<body>
+    <%- include('../../customer/shared/header') %>
+    <main class="container">
+        <div class="inquiry-details">
+            <h2>Selected Inquiry</h2>
+            <p class="subtext">Respond to the customer's message</p>
+            <div class="inquiry-content">
+              <h3><%= contact.subject %></h3>
+              <p><strong>From:</strong> <%= contact.fullname %> (<%= contact.email %>)</p>
+              <div class="customer-question"><%= contact.message %></div>
+              <form action="/equiriesResponse" method="POST">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+                <textarea
+                  name="response"
+                  placeholder="Type your response here..."
+                  required
+                ></textarea>
+                <input type="hidden" name="contactId" value="<%= contact._id %>" />
+                <button class="send-btn">Send Response</button>
+              </form>              
+            </div>
+          </div>
+          
+    </main>
+    <%- include('../../customer/shared/footer') %>

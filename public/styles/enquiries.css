@@ -46,6 +46,9 @@ ul {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+.list-group-item {
+  cursor: pointer;
+}
 
 .inquiry-item:hover {
   background-color: #e0e0e0;

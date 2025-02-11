@@ -1,146 +1,99 @@
 <%- include('./shared/head', { pageTitle: 'E-SQUARED MEDIA'}) %>
-<link rel="stylesheet" href="/styles/home.css" />
-  </head>
-  <body>
-    <%- include('./shared/header') %>
-    <main>
-        <section class="main-section">
-          <h3>Capture Your Special Moments</h3>
-          <p>
-            Professional photography and videography for all your events. We
-            create memories that last a lifetime.
-          </p>
-          <div class="main-section-buttons">
-            <ul>
-              <a href="/views/customer/authentication/login.html"
-                ><li class="btn">Book Now</li></a
-              >
-              <a href="/views/customer/authentication/login.html"
-                ><li class="btn">Learn More</li></a
-              >
-            </ul>
-          </div>
-        </section>
-        <section class="services">
-          <h3>Our Services</h3>
-          <div class="services-breakdown">
-            <div class="photo-service">
-              <i class="fa-solid fa-camera"></i>
-              <h4>Event Photography</h4>
-              <p>
-                Capture the essence of your special day with our professional
-                photography services.
-              </p>
-            </div>
-            <div class="video-service">
-              <i class="fa-solid fa-video"></i>
-              <h4>Event Videography</h4>
-              <p>
-                Create lasting memories with our high-quality video production for
-                your events.
-              </p>
-            </div>
-            <div class="package-service">
-              <i class="fa-sharp fa-regular fa-envelope"></i>
-              <h4>Photo & Video Packages</h4>
-              <p>
-                Get the best of both worlds with our combined photo and video
-                packages.
-              </p>
-            </div>
-          </div>
-        </section>
-        <section class="Portfolio">
-          <h3>Our Portfolio</h3>
-          <section class="photo-gallery">
-            <!--WE WILL LOOP THROUGH IMAGES IN THE DATABASE-->
-            <ul>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
+</head>
+<body class="bg-white text-black font-sans">
+  <%- include('./shared/header') %>
+  <main>
+    <!-- Hero Section -->
+    <section class="main-section bg-cover bg-center relative text-center py-60 px-6" style="background-image: url('/media/emmzo.jpg');">
+      <div class="absolute inset-0 bg-black bg-opacity-10"></div>
+      <div class="relative z-10">
+        <h3 class="text-3xl font-bold mb-4 text-white">Capture Your Special Moments</h3>
+        <p class="mb-6 text-lg text-white">
+          Professional photography and videography for all your events. We create
+          memories that last a lifetime.
+        </p>
+        <div class="main-section-buttons">
+          <ul class="flex justify-center space-x-4">
+            <a href="/views/customer/authentication/login.html">
+              <li class="btn bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-800">
+                Book Now
               </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
+            </a>
+            <a href="/views/customer/authentication/login.html">
+              <li class="btn bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-800">
+                Learn More
               </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-              <li>
-                <div class="photo-item">
-                  <img src="/bride.jpg" alt="Image 1" />
-                </div>
-              </li>
-            </ul>
-          </section>
-        </section>
-        <section class="reviews">
-          <h3>Client Testimonials</h3>
-          <p>
+            </a>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services py-12 px-6 bg-gray-100 mt-6 text-center">
+      <h3 class="text-2xl font-bold mb-8">Our Services</h3>
+      <div class="services-breakdown grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Event Photography -->
+        <div class="photo-service bg-white p-6 rounded shadow hover:shadow-lg">
+          <i class="fa-solid fa-camera text-4xl mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Event Photography</h4>
+          <p>Capture the essence of your special day with our professional photography services.</p>
+        </div>
+        <!-- Event Videography -->
+        <div class="video-service bg-white p-6 rounded shadow hover:shadow-lg">
+          <i class="fa-solid fa-video text-4xl mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Event Videography</h4>
+          <p>Create lasting memories with our high-quality video production for your events.</p>
+        </div>
+        <!-- Photo & Video Packages -->
+        <div class="package-service bg-white p-6 rounded shadow hover:shadow-lg">
+          <i class="fa-regular fa-envelope text-4xl mb-4"></i>
+          <h4 class="text-xl font-semibold mb-2">Photo & Video Packages</h4>
+          <p>Get the best of both worlds with our combined photo and video packages.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio py-12 px-6 bg-white">
+      <h3 class="text-2xl font-bold text-center mb-8">Our Portfolio</h3>
+      <section class="photo-gallery">
+        <div class="taggbox" style="width:100%;height:100%" data-widget-id="2145767" data-tags="false"></div>
+        <script src="https://widget.taggbox.com/embed-lite.min.js" type="text/javascript"></script>
+      </section>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews py-12 px-6 bg-gray-100 text-center">
+      <h3 class="text-2xl font-bold mb-6">Client Testimonials</h3>
+      <div class="space-y-8">
+        <div>
+          <p class="italic mb-4">
             "EventCapture made our wedding day unforgettable. The photos and video
             are absolutely stunning!"
           </p>
-          <p>- Emily R.</p>
-        </section>
-        <%- include('./shared/bookings') %> 
-      </main>
-    <%- include('./shared/footer') %>
+          <p class="font-semibold">- Emily R.</p>
+          <div class="text-yellow-500">★★★★★</div>
+        </div>
+        <div>
+          <p class="italic mb-4">
+            "Highly professional team with amazing results. They perfectly captured our corporate event."
+          </p>
+          <p class="font-semibold">- James T.</p>
+          <div class="text-yellow-500">★★★★☆</div>
+        </div>
+        <div>
+          <p class="italic mb-4">
+            "Loved the photoshoot session! Friendly team and great quality pictures."
+          </p>
+          <p class="font-semibold">- Sarah M.</p>
+          <div class="text-yellow-500">★★★★★</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bookings Section -->
+    <%- include('./shared/bookings') %> 
+  </main>
+  <%- include('./shared/footer') %>
+</body>

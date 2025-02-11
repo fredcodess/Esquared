@@ -1,8 +1,88 @@
-.manage-bookings ul li {
-  display: flex;
+main {
+  font-family: Arial, sans-serif;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 800px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-h2 ul li ul li {
+.auth-main {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  width: 100%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.manage-bookings ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.manage-bookings li {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.manage-bookings ul ul {
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.manage-bookings ul ul li {
+  font-size: 1rem;
+  color: #333;
+}
+
+select {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
 }

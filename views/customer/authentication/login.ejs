@@ -1,21 +1,23 @@
 <%- include('../shared/head', { pageTitle: 'LOGIN'}) %>
-     <link rel="stylesheet" href="/styles/auth.css" />
 </head>
 <body>
     <%- include('../shared/header') %>
     <main>
-      <div class="auth-main">
-        <section class="login-form">
+      <div class="auth-main flex justify-around bg-gray-100 p-8 rounded-lg">
+        <!-- Login Form Section -->
+        <section class="login-form w-full md:w-1/2 flex flex-col space-y-6 p-8">
           <% if (inputData.errorMessage) { %>
-            <section class="alert">
-                <h2>Invalid Credentials</h2>
+            <section class="alert mb-4 p-4 bg-red-100 text-red-600 rounded-lg">
+                <h2 class="font-semibold">Invalid Credentials</h2>
                 <p><%= inputData.errorMessage %></p>
             </section>
-        <% } %>
-          <form action="/login" method="POST">
+          <% } %>
+          
+          <form action="/login" method="POST" class="flex flex-col space-y-4">
             <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
-            <h2 class="login-label">Welcome Back</h2>
-            <label for="email">Email</label>
+            <h2 class="login-label text-center text-2xl mb-6">Welcome Back</h2>
+            
+            <label for="email" class="text-sm">Email</label>
             <input
               type="email"
               name="email"
@@ -23,8 +25,10 @@
               placeholder="Enter your email"
               value="<%= inputData.email %>"
               required
+              class="w-full p-3 border border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
             />
-            <label for="password">Password</label>
+            
+            <label for="password" class="text-sm">Password</label>
             <input
               type="password"
               name="password"
@@ -32,20 +36,28 @@
               placeholder="********"
               value="<%= inputData.password %>"
               required
+              class="w-full p-3 border border-gray-300 rounded-md text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-200"
             />
-            <button>Sign In</button>
-            <p>
-              Don't have an account?
-              <a href="signup">
+            
+            <button type="submit" class="w-full p-3 bg-black text-white rounded-lg text-sm hover:bg-gray-700">
+              Sign In
+            </button>
+            
+            <p class="text-center text-sm">
+              Don't have an account? 
+              <a href="signup" class="text-black hover:underline">
                 <strong>Sign Up</strong>
               </a>
             </p>
           </form>
         </section>
-        <section class="login-img">
-          <img src="/camera.jpg" alt="camera.jpg" />
+      
+        <!-- Image Section (Hidden on Mobile) -->
+        <section class="login-img p-4 hidden md:block w-1/2 flex justify-center items-center">
+          <img src="/media/camera.jpg" alt="camera" class="rounded-lg w-[500px] h-[500px] object-cover"/>
         </section>
       </div>
+      
       <%- include('../shared/bookings') %>
     </main>
     <%- include('../shared/footer') %>

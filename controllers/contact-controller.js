@@ -29,52 +29,73 @@ async function getAllEnquiries(req, res, next) {
   }
 }
 
-async function getEnquiriesDetails(req, res, next) {
+async function getUpdateContact(req, res, next) {
   try {
     const contact = await Contact.findById(req.params.id);
-    res.render("customer/products/product-details", { contact: contact });
+    res.render("admin/respond", { contact: contact });
   } catch (error) {
     next(error);
   }
 }
 
-async function getEnquiriesResponse(req, res, next) {
-  const { contactId, response } = req.body; // Extract data from the form submission
-
+async function sendEmailResponse(req, res, next) {
   try {
-    // Save the response to the database (assuming you have a response field in the Contact model)
-    await Contact.saveResponse(contactId, response);
+    const contact = await Contact.findById(req.params.id); // Find contact by ID
+    if (!contact) {
+      return res.status(404).send("Contact not found");
+    }
 
-    // Optional: Send email to the customer
-    const transporter = nodemailer.createTransport({
+    // Get admin's response from the form
+    const { response } = req.body;
+    const adminEmail = "ee.squaredd@gmail.com"; // Admin email address
+
+    // Create a Nodemailer transporter
+    var transporter = nodemailer.createTransport({
       service: "gmail",
+      secure: true,
       auth: {
-        user: "your-email@example.com", // Replace with your email
-        pass: "your-email-password", // Replace with your email password or app password
+        user: adminEmail,
+        pass: "irxoyzhtxyiwkyhz", // Ensure this is handled securely in production
       },
     });
 
+    // Mail options
     const mailOptions = {
-      from: "your-email@example.com",
-      to: contact.email,
-      subject: `Response to: ${contact.subject}`,
-      text: `Dear ${contact.fullname},\n\n${response}\n\nBest regards,\nSupport Team`,
+      from: `E-Squared <${adminEmail}>`,
+      to: contact.email, // Contact's email retrieved from the database
+      subject: contact.subject,
+      text: response,
     };
 
-    await transporter.sendMail(mailOptions);
-
-    // Redirect back to the inquiries page with a success message
-    req.flash("success", "Response sent successfully!");
-    res.redirect("/admin/enquiries");
+    // Send the email
+    await transporter.sendMail(mailOptions, (error) => {
+      if (error) {
+        return next(error); // Handle errors in email sending
+      }
+      contact.update();
+      res.redirect("/admin/enquiries"); // Redirect to the contacts list after sending email
+    });
   } catch (error) {
-    next(error); // Handle errors
+    next(error); // Handle other errors
   }
+}
+async function deleteContact(req, res, next) {
+  let contact;
+  try {
+    contact = await Contact.findById(req.params.id);
+    await contact.remove();
+  } catch (error) {
+    return next(error);
+  }
+
+  res.json({ message: "Deleted Product!" });
 }
 
 module.exports = {
   getContactPage: getContactPage,
   contact: contact,
   getAllEnquiries: getAllEnquiries,
-  getEnquiriesDetails: getEnquiriesDetails,
-  getEnquiriesResponse: getEnquiriesResponse,
+  deleteContact: deleteContact,
+  getUpdateContact: getUpdateContact,
+  sendEmailResponse: sendEmailResponse,
 };

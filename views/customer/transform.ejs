@@ -1,0 +1,117 @@
+<%- include('./shared/head', { pageTitle: 'CONTACT'}) %>
+<link rel="stylesheet" href="/styles/team.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <%- include('./shared/header') %>
+    <main class="flex flex-col items-center justify-center">
+        <h1 class="text-3xl font-bold mb-6 text-center">Transform Your Image</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
+          <!-- Original Image -->
+          <div class="text-center">
+            <h2 class="text-lg font-semibold mb-2">Original Image</h2>
+            <img
+              src="<%= imageUrl %>"
+              class="w-full max-h-96 object-contain border rounded-lg"
+            />
+          </div>
+    
+          <!-- Transformed Image with Loading Spinner -->
+          <div class="text-center">
+            <h2 class="text-lg font-semibold mb-2">Transformed Image</h2>
+    
+            <div
+              id="loadingPreview"
+              class="w-full h-96 flex justify-center items-center"
+            >
+              <div
+                class="w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"
+              ></div>
+            </div>
+    
+            <% if (transformedUrl) { %>
+            <img
+              id="transformedImage"
+              src="<%= transformedUrl %>"
+              class="w-full max-h-96 object-contain border rounded-lg hidden"
+              onload="hideLoadingSpinner()"
+            />
+            <% } %> <% if (transformedUrl) { %>
+            <a
+              id="downloadButton"
+              href="/download?imageUrl=<%= transformedUrl %>"
+              class="mt-4 bg-green-500 text-white px-4 py-2 rounded block text-center flex justify-center items-center"
+            >
+              Download
+              <span
+                id="downloadSpinner"
+                class="hidden ml-2 w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"
+              ></span>
+            </a>
+            <% } %>
+          </div>
+        </div>
+    
+        <!-- Transformation Options -->
+        <form
+          id="transformForm"
+          action="/transform"
+          method="POST"
+          class="mt-6 bg-white p-6 shadow-lg rounded-lg w-full max-w-md"
+        >
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+          <input type="hidden" name="publicId" value="<%= publicId %>" />
+          <label
+            for="transformation"
+            class="block text-sm font-medium text-gray-700"
+            >Choose a transformation:</label
+          >
+          <select
+            name="transformation"
+            id="transformation"
+            class="border p-2 rounded w-full mt-2"
+          >
+            <option value="resize">Resize (300x300)</option>
+            <option value="grayscale">Grayscale</option>
+            <option value="rotate">Rotate 90°</option>
+          </select>
+          <button
+            id="transformButton"
+            type="submit"
+            class="mt-4 bg-blue-500 text-white px-4 py-2 rounded w-full flex justify-center items-center"
+          >
+            Apply
+            <span
+              id="transformSpinner"
+              class="hidden ml-2 w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"
+            ></span>
+          </button>
+        </form>
+    
+        <script>
+          document
+            .getElementById("transformForm")
+            .addEventListener("submit", function () {
+              document.getElementById("transformButton").disabled = true;
+              document
+                .getElementById("transformSpinner")
+                .classList.remove("hidden");
+              document.getElementById("loadingPreview").classList.remove("hidden"); // Show preview loading spinner
+              document.getElementById("transformedImage").classList.add("hidden"); // Hide transformed image
+            });
+    
+          function hideLoadingSpinner() {
+            document.getElementById("loadingPreview").classList.add("hidden"); // Hide loading spinner
+            document.getElementById("transformedImage").classList.remove("hidden"); // Show transformed image
+          }
+    
+          document
+            .getElementById("downloadButton")
+            ?.addEventListener("click", function () {
+              document.getElementById("downloadSpinner").classList.remove("hidden");
+            });
+        </script>
+      </main>
+    <%- include('./shared/footer') %>
+    

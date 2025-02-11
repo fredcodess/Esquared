@@ -1,0 +1,65 @@
+<%- include('./shared/head', { pageTitle: 'CONTACT'}) %>
+<link rel="stylesheet" href="/styles/team.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <%- include('./shared/header') %>
+    <main class="flex flex-col items-center justify-center">
+      <h1 class="text-3xl font-bold mb-6 text-center">Upload an Image</h1>
+
+      <form
+        id="uploadForm"
+        action="/upload"
+        method="POST"
+        enctype="multipart/form-data"
+        class="bg-white p-6 shadow-lg rounded-lg w-full max-w-md"
+      >
+        <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>"/>
+        <input
+          type="file"
+          name="image"
+          id="imageInput"
+          class="mb-4 border p-2 rounded w-full"
+          required
+        />
+        <img
+          id="preview"
+          class="hidden w-full max-h-64 object-contain border rounded-lg mb-4"
+        />
+  
+        <button
+          id="uploadButton"
+          type="submit"
+          class="bg-blue-500 text-white px-4 py-2 rounded w-full flex justify-center items-center"
+        >
+          Upload
+          <span
+            id="uploadSpinner"
+            class="hidden ml-2 w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"
+          ></span>
+        </button>
+      </form>
+
+      <script>
+        document
+          .getElementById("imageInput")
+          .addEventListener("change", function (event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+              const preview = document.getElementById("preview");
+              preview.src = reader.result;
+              preview.classList.remove("hidden");
+            };
+            reader.readAsDataURL(event.target.files[0]);
+          });
+  
+        document
+          .getElementById("uploadForm")
+          .addEventListener("submit", function () {
+            document.getElementById("uploadButton").disabled = true;
+            document.getElementById("uploadSpinner").classList.remove("hidden");
+          });
+      </script>
+      </main>
+    <%- include('./shared/footer') %>
+    

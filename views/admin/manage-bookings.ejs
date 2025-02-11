@@ -1,58 +1,71 @@
 <%- include('../customer/shared/head', { pageTitle: 'Manage Booking'}) %>
      <link rel="stylesheet" href="/styles/auth.css" />
      <link rel="stylesheet" href="/styles/manage-bookings.css" />
+     <script src="/scripts/booking-management.js" defer></script>
 </head>
 <body>
     <%- include('../customer/shared/header') %>
-    <main>
-      <div class="auth-main">
-        <section class="login-form">
-          <form action="/manage-bookings" method="POST">
-            <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
-            <h2 class="login-label">Pending Booking</h2><ul>
-              <section class="manage-bookings">
-              <li>Customer Name 
-                <ul>
-                  <li>Fred</li>
-                  <li>Gyan</li>
-                </ul>
+    <main class="container mx-auto p-6">
+      <div class="card bg-white shadow-lg rounded-lg overflow-hidden">
+        <div class="card-body p-6">
+          <h1 class="card-title text-3xl font-bold mb-4">Manage Booking</h1>
+          <h2 class="text-2xl font-semibold mb-4">Customer Bookings</h2>
+          
+          <ul class="list-group list-group-flush space-y-4">
+            <% for (const booking of bookings) { %>
+              <li class="list-group-item bg-gray-100 hover:bg-gray-200 p-4 rounded-lg flex justify-between items-center">
+                <div>
+                  <strong class="block text-xl font-semibold">Event Type</strong>
+                  <p class="text-lg text-gray-700"><%= booking.event_type %></p>
+                </div>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end space-x-3">
+                  <a class="btn btn-alt px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300" href="/admin/manage-bookings/<%= booking.id %>">Respond</a>
+                  <button class="btn btn-alt px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-300" data-bookingid="<%= booking.id %>" data-csrf="<%= locals.csrfToken %>">Delete</button>
+                </div>
               </li>
-              <li>Date
-                <ul>
-                  <li>12/12/2222</li>
-                  <li>12/22/2122</li>
-                </ul>
-              </li>
-              <li>Time
-                <ul>
-                  <li>12:21</li>
-                  <li>23:32</li>
-                </ul>
-              </li>
-              <li>Service
-                <ul>
-                  <li>Photography</li>
-                  <li>Videography</li>
-                </ul>
-              </li>
-              <li>Status
-                <ul>
-                  <select name="service-type" id="service-type">
-                    <option value="" disabled selected>pending</option>
-                    <option value="photography">Approved</option>
-                    <option value="videography">Cancel</option>
-                  </select>
-                  <select name="service-type" id="service-type">
-                    <option value="" disabled selected>pending</option>
-                    <option value="photography">Approved</option>
-                    <option value="videography">Cancel</option>
-                  </select>
-                </ul>
-              </li>
-            </section>
-            </ul>
-          </form>
-        </section>
+            <% } %>
+          </ul>
+        </div>
       </div>
     </main>
+    
     <%- include('../customer/shared/footer') %>
+
+      <section class="login-form">
+          <h2 class="login-label">Pending Booking</h2>
+          <ul class="list-group list-group-flush">
+            <% for (const booking of bookings) { %>
+            <li class="list-group-item list-group-item-action">
+            <section class="manage-bookings">
+            <h2>Customer Name </h2>
+                <li>Fred</li>
+            <h2>Date</h2>
+                <li><%= booking.event_date %></li>
+            <h2>Time</h2>
+                <li><%= booking.appointment_time %></li>
+            <h2>Event Type</h2>
+                <li><%= booking.event_type %></li>
+            <h2>Services</h2>
+                <li><%= booking.service_type %></li>
+            <h2>Location</h2>
+                <li><%= booking.event_location %></li>
+            <h2>Status</h2>
+            <a class="btn btn-alt" href="/admin/manage-bookings/<%= booking.id %>">Respond</a>
+            <button class="btn btn-alt send-btn" data-productid="<%= booking.id %>" data-csrf="<%= locals.csrfToken %>">Delete</button>
+              <form action="/status/<%= booking.id %>">
+                <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
+                  <select name="service_type" id="service_type">
+                    <option value="pending" selected>pending</option>
+                    <option value="approved">Approved</option>
+                    <option value="cancelled">Cancel</option>
+                  </select>
+                cancel will delete upon submission
+                <button type="submit">Submit</button>
+              </form>
+          </section>
+        </li>
+          <% } %>
+          </ul>
+      </section>
+    </div> -->

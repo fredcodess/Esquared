@@ -5,4 +5,6 @@ const router = express.Router();
 
 router.get("/", indexController.getHomePage);
 
+router.get("/price", indexController.getPriceList);
+
 module.exports = router;
